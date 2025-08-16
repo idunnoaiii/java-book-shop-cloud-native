@@ -1,0 +1,15 @@
+spring:
+ application:
+  name: "catalog-service"
+
+server:
+  port: 9001
+  tomcat: 
+    # limit how much time Tomcat should wait b/w accepting a TCP connection 
+    # from a client and actually receiving the HTTP request
+    connection-timeout: 2s # 
+    keep-alive-timeout: 15s
+    threads:
+      max: 50
+      min-spase: 5
+
