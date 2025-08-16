@@ -18,3 +18,18 @@
 
 - security: spring-boot-starter-security
 - web   
+
+
+## cmd
+
+```bash
+# run
+./gradlew bootRun
+
+# dockerize
+./gradlew jibDockerBuild
+
+# test
+./gradlew test (--tests BookValidationTests)
+
+```
