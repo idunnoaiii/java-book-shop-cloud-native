@@ -1,6 +1,4 @@
-spring:
- application:
-  name: "catalog-service"
+
 
 server:
   port: 9001
@@ -12,4 +10,35 @@ server:
     threads:
       max: 50
       min-spase: 5
+
+spring:
+  # profiles:
+  #   active: prod
+  application:
+    name: "catalog-service"
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-connect-timeout: 5000
+      request-read-timeout: 5000
+      fail-fast: true # retry property below relies on this one
+      retry:
+        max-attempts: 6
+        initial-interval: 1000
+        max-interval: 2000
+        multiplier: 1.1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+  
+shop:
+  greeting: Welcome to the local book catalog (power by config)
+  testdata:
+    enabled: false
+
 

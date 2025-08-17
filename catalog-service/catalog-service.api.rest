@@ -1,3 +1,12 @@
+
+GET http://localhost:9001/
+
+###
+
+POST http://localhost:9001/actuator/refresh
+
+###
+
 GET http://localhost:9001/books
 
 
