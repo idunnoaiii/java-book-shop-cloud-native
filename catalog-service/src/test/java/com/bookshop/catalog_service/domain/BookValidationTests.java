@@ -17,7 +17,7 @@ public class BookValidationTests {
 
   @Test
   void whenAllFieldsCorrectThenValidationSucceeds() {
-    var book = new Book("1234567890", "Title", "Author", 9.90);
+    var book = Book.of("1234567890", "Title", "Author", 9.90);
 
     var violations = validator.validate(book);
 
@@ -26,7 +26,7 @@ public class BookValidationTests {
 
   @Test
   void whenIsbnDefinedButIncorrectThenValidationFails() {
-    var book = new Book("a234567890", "Title", "Author", 9.90);
+    var book = Book.of("a234567890", "Title", "Author", 9.90);
 
     var violations = validator.validate(book);
 

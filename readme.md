@@ -58,7 +58,10 @@
     
 - libs:
     server: spring-cloud-config-server
-    
+
+- TODO 🚨:
+    - test fail (catalog-service) when adding config server
+        - change spring.cloud.confi-fail-fast -> false
 
 ## cmd
 
