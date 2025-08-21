@@ -1,0 +1,216 @@
+catalog-service-annotations:
+  spring-framework:
+    - annotation: "@SpringBootApplication"
+      location: "CatalogServiceApplication.java:7"
+      functionality: "Combines @Configuration, @EnableAutoConfiguration, and @ComponentScan. Marks the main class that bootstraps the Spring Boot application"
+    
+    - annotation: "@ConfigurationPropertiesScan"
+      location: "CatalogServiceApplication.java:8"
+      functionality: "Enables scanning for @ConfigurationProperties classes"
+    
+    - annotation: "@ConfigurationProperties"
+      location: "ShopProperties.java:5"
+      functionality: "Binds external configuration properties to a Java object with prefix 'shop'"
+    
+    - annotation: "@Configuration"
+      location: "DataConfig.java:6"
+      functionality: "Marks a class as a source of bean definitions for the application context"
+    
+    - annotation: "@EnableJdbcAuditing"
+      location: "DataConfig.java:7"
+      functionality: "Enables JDBC auditing to automatically populate audit fields"
+
+  web-layer:
+    - annotation: "@RestController"
+      locations: 
+        - "BookController.java:17"
+        - "HomeController.java:7"
+      functionality: "Combines @Controller and @ResponseBody for REST API endpoints"
+    
+    - annotation: "@RequestMapping"
+      location: "BookController.java:18"
+      functionality: "Maps HTTP requests to handler methods, sets base path '/books'"
+    
+    - annotation: "@GetMapping"
+      locations:
+        - "BookController.java:27"
+        - "BookController.java:32"
+        - "HomeController.java:16"
+      functionality: "Maps HTTP GET requests to handler methods"
+    
+    - annotation: "@PostMapping"
+      location: "BookController.java:37"
+      functionality: "Maps HTTP POST requests to handler methods"
+    
+    - annotation: "@PutMapping"
+      location: "BookController.java:49"
+      functionality: "Maps HTTP PUT requests to handler methods"
+    
+    - annotation: "@DeleteMapping"
+      location: "BookController.java:43"
+      functionality: "Maps HTTP DELETE requests to handler methods"
+    
+    - annotation: "@PathVariable"
+      locations:
+        - "BookController.java:33"
+        - "BookController.java:45"
+        - "BookController.java:50"
+      functionality: "Extracts values from URI path variables"
+    
+    - annotation: "@RequestBody"
+      locations:
+        - "BookController.java:39"
+        - "BookController.java:50"
+      functionality: "Binds HTTP request body to method parameters"
+    
+    - annotation: "@ResponseStatus"
+      locations:
+        - "BookController.java:38"
+        - "BookController.java:44"
+      functionality: "Sets HTTP response status codes (CREATED, NO_CONTENT)"
+
+  exception-handling:
+    - annotation: "@RestControllerAdvice"
+      location: "BookControllerAdvice.java:14"
+      functionality: "Global exception handler for REST controllers"
+    
+    - annotation: "@ExceptionHandler"
+      locations:
+        - "BookControllerAdvice.java:16"
+        - "BookControllerAdvice.java:22"
+        - "BookControllerAdvice.java:28"
+      functionality: "Handles specific exceptions (BookNotFoundException, BookAlreadyExistsException, MethodArgumentNotValidException)"
+
+  validation:
+    - annotation: "@Valid"
+      locations:
+        - "BookController.java:39"
+        - "BookController.java:50"
+      functionality: "Triggers validation of method parameters"
+    
+    - annotation: "@NotBlank"
+      locations:
+        - "Book.java:13"
+        - "Book.java:16"
+        - "Book.java:17"
+      functionality: "Validates that strings are not null, empty, or whitespace-only"
+    
+    - annotation: "@Pattern"
+      location: "Book.java:14"
+      functionality: "Validates strings against regex patterns (ISBN format validation)"
+
+  data-layer:
+    - annotation: "@Id"
+      location: "Book.java:12"
+      functionality: "Marks primary key field for data persistence"
+    
+    - annotation: "@CreatedDate"
+      location: "Book.java:19"
+      functionality: "Automatically populates creation timestamp"
+    
+    - annotation: "@LastModifiedDate"
+      location: "Book.java:20"
+      functionality: "Automatically populates last modification timestamp"
+    
+    - annotation: "@Version"
+      location: "Book.java:21"
+      functionality: "Enables optimistic locking for concurrency control"
+    
+    - annotation: "@Query"
+      location: "BookRepository.java:18"
+      functionality: "Defines custom SQL queries for repository methods"
+    
+    - annotation: "@Modifying"
+      location: "BookRepository.java:16"
+      functionality: "Indicates query modifies data (INSERT, UPDATE, DELETE)"
+    
+    - annotation: "@Transactional"
+      location: "BookRepository.java:17"
+      functionality: "Ensures method execution within a database transaction"
+
+  service-layer:
+    - annotation: "@Service"
+      location: "BookService.java:5"
+      functionality: "Marks a class as a business service component"
+    
+    - annotation: "@Component"
+      location: "BookDataLoader.java:11"
+      functionality: "Generic stereotype for Spring-managed components"
+    
+    - annotation: "@ConditionalOnProperty"
+      location: "BookDataLoader.java:15"
+      functionality: "Conditionally creates beans based on property values"
+    
+    - annotation: "@EventListener"
+      location: "BookDataLoader.java:23"
+      functionality: "Listens for application events (ApplicationReadyEvent)"
+
+  testing:
+    - annotation: "@SpringBootTest"
+      location: "CatalogServiceApplicationTests.java:11"
+      functionality: "Loads full Spring application context for integration tests"
+    
+    - annotation: "@WebMvcTest"
+      location: "BookControllerMvcTests.java:15"
+      functionality: "Tests only web layer components"
+    
+    - annotation: "@DataJdbcTest"
+      location: "BookRepositoryJdbcTests.java:15"
+      functionality: "Tests JDBC data layer components"
+    
+    - annotation: "@Import"
+      location: "BookRepositoryJdbcTests.java:16"
+      functionality: "Imports specific configuration classes"
+    
+    - annotation: "@AutoConfigureTestDatabase"
+      location: "BookRepositoryJdbcTests.java:17"
+      functionality: "Configures test database settings"
+    
+    - annotation: "@ActiveProfiles"
+      location: "BookRepositoryJdbcTests.java:18"
+      functionality: "Activates specific Spring profiles for tests"
+    
+    - annotation: "@ExtendWith"
+      location: "BookServiceTests.java:13"
+      functionality: "JUnit 5 extension for Mockito integration"
+    
+    - annotation: "@Test"
+      locations:
+        - "Multiple test files"
+      functionality: "Marks methods as test cases"
+    
+    - annotation: "@BeforeAll"
+      location: "BookValidationTests.java:13"
+      functionality: "Executes setup method before all tests"
+
+  dependency-injection:
+    - annotation: "@Autowired"
+      locations:
+        - "Multiple files"
+      functionality: "Enables automatic dependency injection"
+    
+    - annotation: "@MockitoBean"
+      location: "BookControllerMvcTests.java:20"
+      functionality: "Creates and injects Mockito mocks in Spring context"
+    
+    - annotation: "@Mock"
+      location: "BookServiceTests.java:16"
+      functionality: "Creates Mockito mock objects"
+    
+    - annotation: "@InjectMocks"
+      location: "BookServiceTests.java:18"
+      functionality: "Injects mocks into test objects"
+
+summary:
+  total_annotations: 42
+  categories: 7
+  most_used_categories:
+    - web-layer: 10
+    - testing: 9
+    - data-layer: 7
+  key_patterns:
+    - Spring Boot follows convention-over-configuration
+    - Comprehensive validation using Bean Validation API
+    - Proper separation of concerns across layers
+    - Extensive testing with different slice tests
+    - Audit trail support with automatic timestamps

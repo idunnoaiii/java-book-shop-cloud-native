@@ -1,0 +1,32 @@
+services:
+  catalog-service:
+    depends_on:
+      - catalog-db
+    image: "ghcr.io/idunnoaiii/catalog-service:latest"
+    container_name: "catalog-service"
+    ports:
+      - 9001:9001
+    environment:
+      # map syntax
+      # BPL_JVM_THREAD_COUNT: 50
+      # SPRING_DATASOURCE_URL: jdbc:postgresql://catalog-db:5432/catalog
+      # SPRING_PROFILES_ACTIVE: testdata
+      # array syntax
+      - BPL_JVM_THREAD_COUNT=50
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://catalog-db:5432/catalog
+      - SPRING_PROFILES_ACTIVE=testdata
+
+  catalog-db:
+    image: postgres:latest
+    container_name: catalog-db
+    ports:
+      - 5432:5432
+    volumes:
+      - bookshop-catalog-db:/data/postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: catalog
+
+volumes:
+  bookshop-catalog-db:
