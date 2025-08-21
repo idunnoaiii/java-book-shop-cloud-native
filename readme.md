@@ -29,6 +29,11 @@
 
 - 3 state
     - commit stage
+        - build
+        - UT/integration test
+        - static code analysis
+        - packaging
+        - executable app (release candidate) -> publish -> artifact repository 
     - acceptace stage
     - prod state
     
@@ -60,8 +65,33 @@
     server: spring-cloud-config-server
 
 - TODO 🚨:
+    - sync configuration at runtime using mesage queue (rabbitmq, kafka)
     - test fail (catalog-service) when adding config server
         - change spring.cloud.confi-fail-fast -> false
+
+
+## Persistence
+
+## Containerization
+- OCI (Open container initiative)
+
+- buid container for prod
+
+    - Security
+        - dont use root user to execute cmd in container (least previlages)
+        - use grype to scan vulnerabilities of the image
+
+    - Optimizing
+        run this command to extract the uberJar file into 4 layers:
+            `java -Djarmode=tools -jar catalog-service-0.0.1-SNAPSHOT.jar extract --layers --launcher`
+            - dependencies
+            - spring-boot-loader
+            - snapshot-dependencies
+            - application
+
+    - use third party buildpack, google jib
+
+- signing the release candidate [sigstore](www.sigstore.dev)
 
 ## cmd
 
@@ -72,7 +102,12 @@
 # dockerize
 ./gradlew jibDockerBuild
 
+./gradlew bootBuildImage
+
 # test
 ./gradlew test (--tests BookValidationTests)
 
 ```
+
+## Connection Strings
+see [link](./database-connection-strings.md)
