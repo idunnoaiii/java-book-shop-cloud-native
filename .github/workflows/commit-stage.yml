@@ -44,7 +44,8 @@ jobs:
         uses: alexellis/arkade-get@master
         with:
           kubeconform: latest
-          kubeconform_args: "--strict -d k8s"
+          command: |
+            kubeconform --strict k8s
 
   package:
     name: package and publish
