@@ -92,6 +92,57 @@
     - use third party buildpack, google jib
 
 - signing the release candidate [sigstore](www.sigstore.dev)
+- **NOTE**: grant write permision the repository that run action at package path
+
+## k8s
+
+- Kubenetes clients user API to interact wth Kubernetes Control Plane
+- Components
+    - Cluster
+    - Control Plane
+    - Worker nodes
+    - Pod
+- Glossary
+    - *Pods*: is the smallest k8s object, "present a set of running container"
+        - single-container pod
+        - multi-container pod
+    - *Deployment*: is an object that manages the life cycle of a stateless, replicated appli- cation, Each replica is represented by a Pod
+    -  *Service*: an abstract way to expose an application running on a set of Pods as a network service
+
+## Service discovery
+- using DNS is have the issue with caching 
+- 2 types of service discovery
+    - client-side 
+        - require app to register/unregister themself with service registry upon startup/shutting down
+        - pros: your applications (client) have complete control over the load-balancing strategy
+        - cons: 
+            - assigns more responsibility to develop- ers
+            - what if we have multiple service using multiple programing language/framework
+            - require one more service to maintain (service registry)
+        - libs: Spring Cloud Netflix Eureka, Spring Cloud Consul, Spring Cloud Zookeeper Discovery, and Spring Cloud
+Alibaba Nacos.
+    - server-side
+        - move a lot o responsibilies to the deployment platform 
+        
+
+
+
+### cmd
+```sh
+
+$ kubectl config get-contexts
+
+$ kubectl config current-contexts
+
+$ kubectl config use-contexts polar
+
+$ minikube start --profile polar
+
+$ minikube delete --profile polar
+
+```
+
+
 
 ## cmd
 
@@ -108,6 +159,15 @@
 ./gradlew test (--tests BookValidationTests)
 
 ```
+
+## service name
+
+(boundary)-(name of technology)-(name of functionality e.g db, mq, cache...)
+
+- catalog-service
+    - catalog-postgre-db
+- config-service
+- 
 
 ## Connection Strings
 see [link](./database-connection-strings.md)

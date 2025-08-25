@@ -2,6 +2,7 @@
 
 server:
   port: 9001
+  shutdown: graceful
   tomcat: 
     # limit how much time Tomcat should wait b/w accepting a TCP connection 
     # from a client and actually receiving the HTTP request
@@ -16,6 +17,8 @@ spring:
   #   active: prod
   application:
     name: "catalog-service"
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
   config:
     import: "optional:configserver:"
   cloud:
