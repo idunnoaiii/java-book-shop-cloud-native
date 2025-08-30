@@ -1,7 +1,9 @@
+name: bookshop-cloud-native
+
 services:
   catalog-service:
     depends_on:
-      - catalog-db
+      - bookshop-postgres
     image: "ghcr.io/idunnoaiii/catalog-service:latest"
     container_name: "catalog-service"
     ports:
@@ -9,24 +11,21 @@ services:
     environment:
       # map syntax
       # BPL_JVM_THREAD_COUNT: 50
-      # SPRING_DATASOURCE_URL: jdbc:postgresql://catalog-db:5432/catalog
+      # SPRING_DATASOURCE_URL: jdbc:postgresql://bookshop-postgres:5432/catalog_db
       # SPRING_PROFILES_ACTIVE: testdata
       # array syntax
       - BPL_JVM_THREAD_COUNT=50
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://catalog-db:5432/catalog
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://bookshop-postgres:5432/catalog_db
       - SPRING_PROFILES_ACTIVE=testdata
 
-  catalog-db:
+  bookshop-postgres:
     image: postgres:latest
-    container_name: catalog-db
+    container_name: bookshop-postgres
     ports:
       - 5432:5432
     volumes:
-      - bookshop-catalog-db:/data/postgres
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: catalog
-
-volumes:
-  bookshop-catalog-db:
+      # POSTGRES_DB: catalog

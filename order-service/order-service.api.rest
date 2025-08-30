@@ -1,0 +1,73 @@
+### Order Service API
+
+### Get all orders
+GET http://localhost:9002/orders
+Content-Type: application/json
+
+###
+
+### Submit new order
+POST http://localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "1234567890123",
+  "quantity": 2
+}
+
+###
+
+### Submit order with minimum quantity
+POST http://localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "9781234567890",
+  "quantity": 1
+}
+
+###
+
+### Submit order with maximum quantity
+POST http://localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "9789876543210",
+  "quantity": 5
+}
+
+###
+
+### Test validation - empty ISBN (should fail)
+POST http://localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "",
+  "quantity": 2
+}
+
+###
+
+### Test validation - quantity too low (should fail)
+POST http://localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "1234567890123",
+  "quantity": 0
+}
+
+###
+
+### Test validation - quantity too high (should fail)
+POST http://localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "1234567890123",
+  "quantity": 6
+}
+
+###

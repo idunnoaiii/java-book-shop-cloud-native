@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: catalog
+      # POSTGRES_DB: catalog
 
 volumes:
   bookshop-catalog-db:

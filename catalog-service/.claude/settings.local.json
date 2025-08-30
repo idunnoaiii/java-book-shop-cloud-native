@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/**)",
+      "Read(//Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/.github/workflows/**)",
+      "Read(//Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/config-service/**)",
+      "Read(//Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/**)",
+      "Read(//Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/**)"
+    ],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native"
+    ]
+  }
+}

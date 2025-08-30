@@ -124,6 +124,7 @@ Alibaba Nacos.
     - server-side
         - move a lot o responsibilies to the deployment platform 
         
+## Reactive
 
 
 
@@ -171,3 +172,9 @@ $ minikube delete --profile polar
 
 ## Connection Strings
 see [link](./database-connection-strings.md)
+
+--- 
+## TODO
+- [ ] create pipeline for configuration-service
+    - [ ] reusable template
+- 
