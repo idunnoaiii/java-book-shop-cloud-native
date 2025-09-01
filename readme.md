@@ -126,6 +126,10 @@ Alibaba Nacos.
         
 ## Reactive
 
+- Rest communication 
+    - RestTemplate (deprecated): blocking I/O
+    - WebClient: supports both blocking I/O and non-blocking I/O
+
 
 
 ### cmd

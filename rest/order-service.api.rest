@@ -11,7 +11,7 @@ POST http://localhost:9002/orders
 Content-Type: application/json
 
 {
-  "isbn": "1234567890123",
+  "isbn": "1231231231",
   "quantity": 2
 }
 
@@ -22,7 +22,7 @@ POST http://localhost:9002/orders
 Content-Type: application/json
 
 {
-  "isbn": "9781234567890",
+  "isbn": "",
   "quantity": 1
 }
 
