@@ -29,7 +29,7 @@ public class OrderService {
         .flatMap(orderRepository::save);
   }
 
-  private Order buildAcceptedOrder(Book book, Integer quantity) {
+  public static Order buildAcceptedOrder(Book book, Integer quantity) {
     return Order.of(
         book.isbn(),
         book.title() + " - " + book.author(),
@@ -38,7 +38,7 @@ public class OrderService {
         OrderStatus.ACCEPTED);
   }
 
-  private Order buildRejectedOrder(String bookIsbn, Integer quantity) {
+  public static Order buildRejectedOrder(String bookIsbn, Integer quantity) {
     return Order.of(bookIsbn, null, null, quantity, OrderStatus.REJECTED);
   }
 }
