@@ -47,6 +47,20 @@ dependencies {
 	
 }
 
+bootBuildImage {
+	imageName = "ghcr.io/idunnoaiii/${project.name}"
+	environment = ["BP_JVM_VERSION" : "17.*"]
+
+	// $ ./gradlew bootBuildImage --imageName ghcr.io/idunnoaiii/catalog-service --publishImage -PregistryUrl=ghcr.io -PregistryUsername=idunnoaiii -PregistryToken={{token}}
+	// docker {
+	// 	publishRegistry {
+	// 		username = project.findProperty('registryUsername')
+	// 		password = project.findProperty('registryToken')
+	// 		url = project.findProperty('registryUrl')
+	// 	}
+	// }
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }

@@ -53,13 +53,13 @@ dependencies {
 
 dependencyManagement {
 	imports {
-		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${	springCloudVersion}"
 		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
 	}
 }
 
 bootBuildImage {
-	imageName = "${project.name}"
+	imageName = "ghcr.io/idunnoaiii/${project.name}"
 	environment = ["BP_JVM_VERSION" : "17.*"]
 
 	// $ ./gradlew bootBuildImage --imageName ghcr.io/idunnoaiii/catalog-service --publishImage -PregistryUrl=ghcr.io -PregistryUsername=idunnoaiii -PregistryToken={{token}}

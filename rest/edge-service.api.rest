@@ -1,0 +1,70 @@
+### Edge Service API - Catalog Routes
+@baseUrl = http://localhost:9000
+
+### Get all books
+GET {{baseUrl}}/books
+Accept: application/json
+
+### Get book by ISBN
+GET {{baseUrl}}/books/1234567890
+Accept: application/json
+
+### Create new book
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+  "isbn": "1234567890",
+  "title": "Test Book",
+  "author": "Test Author",
+  "price": 29.99
+}
+
+### Update book
+PUT {{baseUrl}}/books/1234567890
+Content-Type: application/json
+
+{
+  "isbn": "1234567890",
+  "title": "Updated Book",
+  "author": "Updated Author",
+  "price": 39.99
+}
+
+### Delete book
+DELETE {{baseUrl}}/books/1234567890
+
+### Edge Service API - Order Routes
+
+### Get all orders
+GET {{baseUrl}}/orders
+Accept: application/json
+
+### Get order by ID
+GET {{baseUrl}}/orders/1
+Accept: application/json
+
+### Create new order
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+  "bookIsbn": "1234567890",
+  "bookTitle": "Test Book",
+  "bookPrice": 29.99,
+  "quantity": 2
+}
+
+### Update order
+PUT {{baseUrl}}/orders/1
+Content-Type: application/json
+
+{
+  "bookIsbn": "1234567890",
+  "bookTitle": "Updated Book",
+  "bookPrice": 39.99,
+  "quantity": 3
+}
+
+### Delete order
+DELETE {{baseUrl}}/orders/1

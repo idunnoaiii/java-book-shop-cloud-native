@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/edge-service/src/main/resources/**)",
+      "Read(/Users/thiennq14/code/java/dev/book/java-book-shop-cloud-native/rest/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

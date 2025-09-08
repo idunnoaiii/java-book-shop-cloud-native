@@ -18,6 +18,25 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://bookshop-postgres:5432/catalog_db
       - SPRING_PROFILES_ACTIVE=testdata
 
+  order-service:
+    depends_on:
+      - bookshop-postgres
+    image: "ghcr.io/idunnoaiii/order-service:latest"
+    container_name: "order-service"
+    ports:
+      - 9002:9002
+    environment:
+      # map syntax
+      # BPL_JVM_THREAD_COUNT: 50
+      # SPRING_DATASOURCE_URL: jdbc:postgresql://bookshop-postgres:5432/catalog_db
+      # SPRING_PROFILES_ACTIVE: testdata
+      # array syntax
+      - BPL_JVM_THREAD_COUNT=50
+      - SPRING_R2DBC_URL=r2dbc:postgresql://bookshop-postgres:5432/order_db
+      - SPRING_FLYWAY_URL=jdbc:postgresql://bookshop-postgres:5432/order_db
+      - SPRING_PROFILES_ACTIVE=testdata
+      - SHOP_CATALOG_SERVICE_URI=http://catalog-service:9001
+
   bookshop-postgres:
     image: postgres:latest
     container_name: bookshop-postgres
