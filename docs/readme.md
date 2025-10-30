@@ -189,6 +189,15 @@ $ minikube delete --profile polar
 - config-service
 - 
 
+## containerization
+
+Using colima with basic command
+
+```bash
+start --cpu 4 --memory 8 --disk 60 --vm-type vz
+```
+
+
 ## Connection Strings
 see [link](./database-connection-strings.md)
 
